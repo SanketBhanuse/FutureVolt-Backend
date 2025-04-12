@@ -9,13 +9,14 @@ function isFutureDate(dateString) {
     const inputDate = new Date(year, month - 1, day);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    return inputDate > today;
+    return inputDate >= today;
 }
 
 // Get data for specific date (works for both past and future)
 router.get('/:date', async (req, res) => {
     try {
         const date = req.params.date;
+
 
         if (isFutureDate(date)) {
             // Fetch from FutureData collection (same schema structure)
